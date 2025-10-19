@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CalculatorService {
-    public String checkDelimiter(String input){
+    public String getDelimiter(String input){
         if(isDelimiter(input)){
             return String.valueOf(input.charAt(2));
         }
@@ -23,8 +23,14 @@ public class CalculatorService {
     }
 
     public List<Integer> getNumbers(String input, String customDelimiter){
+        String numbers = input;
+
+        if(customDelimiter != null){
+            numbers = input.substring(5);
+        }
+
         List<Integer> numberList = new ArrayList<>();
-        String[] splitedNumbers = input.split(",|:" + customDelimiter);
+        String[] splitedNumbers = numbers.split(",|:" + customDelimiter);
 
         for(String i : splitedNumbers){
             numberList.add(Integer.parseInt(i));
