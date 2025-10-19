@@ -36,7 +36,24 @@ public class CalculatorService {
         String[] splitedNumbers = numbers.split(delimiter, -1);
 
         for(String i : splitedNumbers){
-            numberList.add(new BigInteger(i));
+            String number = i.trim();
+
+            if(number.isEmpty()){
+                throw new IllegalArgumentException();
+            }
+
+            BigInteger parsedNumber;
+            try {
+                parsedNumber = new BigInteger(number);
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException();
+            }
+
+            if(parsedNumber.compareTo(BigInteger.ZERO) <= 0){
+                throw new IllegalArgumentException();
+            }
+
+            numberList.add(new BigInteger(i.trim()));
         }
 
         return numberList;
