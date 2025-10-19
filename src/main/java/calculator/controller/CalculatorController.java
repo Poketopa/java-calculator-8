@@ -11,10 +11,10 @@ public class CalculatorController {
     private final InputView inputView;
     private final OutputView outputView;
 
-    public CalculatorController(CalculatorService calculatorService, InputView inputView, OutputView outputView) {
-        this.calculatorService = calculatorService;
-        this.inputView = inputView;
-        this.outputView = outputView;
+    public CalculatorController() {
+        this.calculatorService = new CalculatorService();
+        this.inputView = new InputView();
+        this.outputView = new OutputView();
     }
 
     public void run(){
