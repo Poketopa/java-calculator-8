@@ -19,7 +19,7 @@
 - [x] 구분자 사이에 숫자가 아닌 문자를 입력하면 `IllegalArgumentException`을 발생시킨다.
 - [x] 구분자는 있지만 숫자가 없는 경우 (연속된 구분자) `IllegalArgumentException`을 발생시킨다.
 - [x] 잘못된 커스텀 구분자 형식인 경우 `IllegalArgumentException`을 발생시킨다.
-- [ ] 예외 발생 시 애플리케이션을 종료한다.
+- [x] 예외 발생 시 애플리케이션을 종료한다.
 
 
 

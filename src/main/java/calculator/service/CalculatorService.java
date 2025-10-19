@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CalculatorService {
+    public boolean checkEmpty(String input){
+        return input == null || input.trim().isBlank();
+    }
+
     public String getDelimiter(String input){
         if(isDelimiter(input)){
             return String.valueOf(input.charAt(2));

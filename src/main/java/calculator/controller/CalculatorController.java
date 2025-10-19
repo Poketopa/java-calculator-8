@@ -20,6 +20,11 @@ public class CalculatorController {
     public void run(){
         String input = inputView.inputNumber();
 
+        if(calculatorService.checkEmpty(input)) {
+            outputView.printResult(new BigInteger("0"));
+            return;
+        }
+
         String customDelimiter = calculatorService.getDelimiter(input);
 
         List<BigInteger> numberList =calculatorService.getNumbers(input, customDelimiter);
