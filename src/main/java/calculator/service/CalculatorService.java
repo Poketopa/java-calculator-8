@@ -3,6 +3,7 @@ package calculator.service;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class CalculatorService {
     public boolean checkEmpty(String input){
@@ -33,7 +34,7 @@ public class CalculatorService {
 
         if(customDelimiter != null){
             numbers = input.substring(5);
-            delimiter += "|" + customDelimiter;
+            delimiter += "|" + Pattern.quote(customDelimiter);
         }
 
         List<BigInteger> numberList = new ArrayList<>();
