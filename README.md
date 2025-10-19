@@ -15,7 +15,7 @@
 - [x] 계산 결과를 형식에 맞게 출력한다. (`결과 : {계산 결과}`)
 
 ## 예외처리
-- [ ] 음수를 입력하면 `IllegalArgumentException`을 발생시킨다.
+- [x] 음수를 입력하면 `IllegalArgumentException`을 발생시킨다.
 - [ ] 구분자 사이에 숫자가 아닌 문자를 입력하면 `IllegalArgumentException`을 발생시킨다.
 - [ ] 구분자는 있지만 숫자가 없는 경우 (연속된 구분자) `IllegalArgumentException`을 발생시킨다.
 - [ ] 잘못된 커스텀 구분자 형식인 경우 `IllegalArgumentException`을 발생시킨다.
