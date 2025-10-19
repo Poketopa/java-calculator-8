@@ -11,7 +11,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 빈_문자열_입력() {
         assertSimpleTest(() -> {
-            run("");
+            run(" ");
             assertThat(output()).contains("결과 : 0");
         });
     }
@@ -145,7 +145,93 @@ class ApplicationTest extends NsTest {
         });
     }
 
-    // ========== 예외 테스트 ==========
+    @Test
+    void 커스텀_구분자_닷_메타문자() {
+        assertSimpleTest(() -> {
+            run("//.\\n1.2.3");
+            assertThat(output()).contains("결과 : 6");
+        });
+    }
+
+    @Test
+    void 커스텀_구분자_공백_허용() {
+        assertSimpleTest(() -> {
+            run("// \\n1 2 3");
+            assertThat(output()).contains("결과 : 6");
+        });
+    }
+
+    @Test
+    void 기본_구분자와_공백_혼용_trim_확인() {
+        assertSimpleTest(() -> {
+            run(" 1 , 2 : 3 ");
+            assertThat(output()).contains("결과 : 6");
+        });
+    }
+
+    @Test
+    void 매우_큰_수_여러개_BigInteger_확인() {
+        assertSimpleTest(() -> {
+            run("//;\\n100000000000000000000;200000000000000000000;300000000000000000000");
+            assertThat(output()).contains("결과 : 600000000000000000000");
+        });
+    }
+
+    @Test
+    void 커스텀_구분자_숫자_금지() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("//1\\n1,2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 커스텀_헤더_개행_누락() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("//;1;2")) // \n 없음
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 커스텀_헤더_CR_개행_형식_오류() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("//;\\r1;2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 커스텀_구분자_시작에_연속() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("//;\\n;1;2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 커스텀_구분자_끝에_연속() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("//;\\n1;2;"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 기본_구분자만_입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(",,:"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 토큰이_공백만인_경우_예외() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1, ,3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
     @Test
     void 예외_음수_단일값() {
