@@ -72,9 +72,6 @@ public class CalculatorService {
         BigInteger sum = BigInteger.ZERO;
 
         for(BigInteger i : numberList){
-            if(i.compareTo(BigInteger.ZERO) <= 0){
-                throw new IllegalArgumentException();
-            }
             sum = sum.add(i);
         }
 
