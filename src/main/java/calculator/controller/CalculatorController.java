@@ -23,5 +23,9 @@ public class CalculatorController {
         String customDelimiter = calculatorService.getDelimiter(input);
 
         List<BigInteger> numberList =calculatorService.getNumbers(input, customDelimiter);
+
+        BigInteger sum = calculatorService.getSum(numberList);
+
+        outputView.printResult(sum);
     }
 }

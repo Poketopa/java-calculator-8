@@ -41,4 +41,14 @@ public class CalculatorService {
 
         return numberList;
     }
+
+    public BigInteger getSum(List<BigInteger> numberList){
+        BigInteger sum = BigInteger.ZERO;
+
+        for(BigInteger i : numberList){
+            sum = sum.add(i);
+        }
+
+        return sum;
+    }
 }
