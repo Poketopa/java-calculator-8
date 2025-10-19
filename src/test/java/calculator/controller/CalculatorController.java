@@ -3,6 +3,7 @@ package calculator.controller;
 import calculator.service.CalculatorService;
 import calculator.view.InputView;
 import calculator.view.OutputView;
+import java.math.BigInteger;
 import java.util.List;
 
 public class CalculatorController {
@@ -21,6 +22,6 @@ public class CalculatorController {
 
         String customDelimiter = calculatorService.getDelimiter(input);
 
-        List<Integer> numberList =calculatorService.getNumbers(input, customDelimiter);
+        List<BigInteger> numberList =calculatorService.getNumbers(input, customDelimiter);
     }
 }

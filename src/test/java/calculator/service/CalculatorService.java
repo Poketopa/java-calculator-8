@@ -1,5 +1,6 @@
 package calculator.service;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class CalculatorService {
         return false;
     }
 
-    public List<Integer> getNumbers(String input, String customDelimiter){
+    public List<BigInteger> getNumbers(String input, String customDelimiter){
         String numbers = input;
         String delimiter = ",|:";
 
@@ -31,11 +32,11 @@ public class CalculatorService {
             delimiter += "|" + customDelimiter;
         }
 
-        List<Integer> numberList = new ArrayList<>();
+        List<BigInteger> numberList = new ArrayList<>();
         String[] splitedNumbers = numbers.split(delimiter, -1);
 
         for(String i : splitedNumbers){
-            numberList.add(Integer.parseInt(i));
+            numberList.add(new BigInteger(i));
         }
 
         return numberList;
