@@ -21,7 +21,7 @@ public class CalculatorController {
         String input = inputView.inputNumber();
 
         if(calculatorService.checkEmpty(input)) {
-            outputView.printResult(new BigInteger("0"));
+            outputView.printResult(BigInteger.ZERO);
             return;
         }
 
