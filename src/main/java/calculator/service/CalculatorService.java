@@ -6,14 +6,14 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class CalculatorService {
-    public boolean checkEmpty(String input){
+    public boolean checkEmpty(String input) {
         return input == null || input.trim().isBlank();
     }
 
-    public String getDelimiter(String input){
-        if(isDelimiter(input)){
+    public String getDelimiter(String input) {
+        if (isDelimiter(input)) {
             char delimiter = input.charAt(2);
-            if(Character.isDigit(delimiter)){
+            if (Character.isDigit(delimiter)) {
                 throw new IllegalArgumentException();
             }
             return String.valueOf(delimiter);
@@ -21,22 +21,22 @@ public class CalculatorService {
         return null;
     }
 
-    public boolean isDelimiter(String input){
-        if(input.length() >= 5
-        && input.charAt(0) == '/'
-        && input.charAt(1) == '/'
-        && input.charAt(3) == '\\'
-        && input.charAt(4) == 'n'){
+    public boolean isDelimiter(String input) {
+        if (input.length() >= 5
+                && input.charAt(0) == '/'
+                && input.charAt(1) == '/'
+                && input.charAt(3) == '\\'
+                && input.charAt(4) == 'n') {
             return true;
         }
         return false;
     }
 
-    public List<BigInteger> getNumbers(String input, String customDelimiter){
+    public List<BigInteger> getNumbers(String input, String customDelimiter) {
         String numbers = input;
         String delimiter = ",|:";
 
-        if(customDelimiter != null){
+        if (customDelimiter != null) {
             numbers = input.substring(5);
             delimiter += "|" + Pattern.quote(customDelimiter);
         }
@@ -44,10 +44,10 @@ public class CalculatorService {
         List<BigInteger> numberList = new ArrayList<>();
         String[] splitedNumbers = numbers.split(delimiter, -1);
 
-        for(String i : splitedNumbers){
+        for (String i : splitedNumbers) {
             String number = i.trim();
 
-            if(number.isEmpty()){
+            if (number.isEmpty()) {
                 throw new IllegalArgumentException();
             }
 
@@ -58,7 +58,7 @@ public class CalculatorService {
                 throw new IllegalArgumentException();
             }
 
-            if(parsedNumber.compareTo(BigInteger.ZERO) <= 0){
+            if (parsedNumber.compareTo(BigInteger.ZERO) <= 0) {
                 throw new IllegalArgumentException();
             }
 
@@ -68,10 +68,10 @@ public class CalculatorService {
         return numberList;
     }
 
-    public BigInteger getSum(List<BigInteger> numberList){
+    public BigInteger getSum(List<BigInteger> numberList) {
         BigInteger sum = BigInteger.ZERO;
 
-        for(BigInteger i : numberList){
+        for (BigInteger i : numberList) {
             sum = sum.add(i);
         }
 

@@ -17,17 +17,17 @@ public class CalculatorController {
         this.outputView = new OutputView();
     }
 
-    public void run(){
+    public void run() {
         String input = inputView.inputNumber();
 
-        if(calculatorService.checkEmpty(input)) {
+        if (calculatorService.checkEmpty(input)) {
             outputView.printResult(BigInteger.ZERO);
             return;
         }
 
         String customDelimiter = calculatorService.getDelimiter(input);
 
-        List<BigInteger> numberList =calculatorService.getNumbers(input, customDelimiter);
+        List<BigInteger> numberList = calculatorService.getNumbers(input, customDelimiter);
 
         BigInteger sum = calculatorService.getSum(numberList);
 
