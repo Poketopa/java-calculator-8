@@ -12,7 +12,11 @@ public class CalculatorService {
 
     public String getDelimiter(String input){
         if(isDelimiter(input)){
-            return String.valueOf(input.charAt(2));
+            char delimiter = input.charAt(2);
+            if(Character.isDigit(delimiter)){
+                throw new IllegalArgumentException();
+            }
+            return String.valueOf(delimiter);
         }
         return null;
     }
