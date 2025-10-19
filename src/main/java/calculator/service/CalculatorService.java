@@ -62,7 +62,7 @@ public class CalculatorService {
                 throw new IllegalArgumentException();
             }
 
-            numberList.add(new BigInteger(i.trim()));
+            numberList.add(parsedNumber);
         }
 
         return numberList;
