@@ -24,13 +24,15 @@ public class CalculatorService {
 
     public List<Integer> getNumbers(String input, String customDelimiter){
         String numbers = input;
+        String delimiter = ",|:";
 
         if(customDelimiter != null){
             numbers = input.substring(5);
+            delimiter += "|" + customDelimiter;
         }
 
         List<Integer> numberList = new ArrayList<>();
-        String[] splitedNumbers = numbers.split(",|:" + customDelimiter);
+        String[] splitedNumbers = numbers.split(delimiter, -1);
 
         for(String i : splitedNumbers){
             numberList.add(Integer.parseInt(i));
