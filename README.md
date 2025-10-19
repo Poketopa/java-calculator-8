@@ -5,7 +5,7 @@
 ### 문자열 계산 기능
 - [x] 숫자 하나만 입력된 경우 해당 숫자를 반환한다.
 - [x] 빈 문자열 혹은 공백이 입력된 경우 0을 반환한다.
-- [x] 커스텀 구분자를 인식하여 계산할 수 있도록 한다.
+- [x] 커스텀 구분자가 주어졌는지 확인한다. (1자리 문자, 숫자 불가능)
 - [x] 쉼표(,)와 콜론(:) 그리고 커스텀 구분자를 사용하여 입력된 문자열에서 숫자를 추출한다.
 - [x] 추출한 숫자의 합을 계산한다.
 
@@ -15,7 +15,9 @@
 - [x] 계산 결과를 형식에 맞게 출력한다. (`결과 : {계산 결과}`)
 
 ## 예외처리
-- [x] 음수를 입력하면 `IllegalArgumentException`을 발생시킨다.
+- [x] 입력값에 음수가 포함되면 `IllegalArgumentException`을 발생시킨다.
+- [x] 입력값에 0이 포함되면 `IllegalArgumentException`을 발생시킨다.
+- [x] 커스텀 구분자가 숫자인 경우 `IllegalArgumentException`을 발생시킨다.
 - [x] 구분자 사이에 숫자가 아닌 문자를 입력하면 `IllegalArgumentException`을 발생시킨다.
 - [x] 구분자는 있지만 숫자가 없는 경우 (연속된 구분자) `IllegalArgumentException`을 발생시킨다.
 - [x] 잘못된 커스텀 구분자 형식인 경우 `IllegalArgumentException`을 발생시킨다.
